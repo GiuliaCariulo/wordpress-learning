@@ -10,8 +10,8 @@
 /web/app/debug.log
 
 # THEME files
-/web/app/themes/mon-theme/dist/
-/web/app/themes/mon-theme/node_modules/
+/web/app/themes/theme-first-test/dist/
+/web/app/themes/theme-first-test/node_modules/
 /web/app/themes/lumberjack/dist/
 /web/app/themes/lumberjack/node_modules/
 /web/app/themes/twentytwentyfive/

@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      THEME_PATH: web/app/themes/mon-theme
+      THEME_PATH: web/app/themes/theme-first-test
 
     steps:
       - name: Checkout code
@@ -46,7 +46,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ${{ env.THEME_PATH }}/node_modules
-          key: ${{ runner.os }}-npm-${{ hashFiles('web/app/themes/mon-theme/package-lock.json') }}
+          key: ${{ runner.os }}-npm-${{ hashFiles('web/app/themes/theme-first-test/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-npm-
 
@@ -62,7 +62,7 @@ jobs:
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519.pub
           ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
 
       - name: Deploy via rsync
@@ -87,7 +87,7 @@ jobs:
             --exclude="composer.json" \
             --exclude="composer.lock" \
             --exclude="web/.htaccess" \
-            --exclude="web/app/theme/mon-theme/package*.json" \
-            --exclude="web/app/theme/mon-theme/node_modules/" \
+            --exclude="web/app/theme/theme-first-test/package*.json" \
+            --exclude="web/app/theme/theme-first-test/node_modules/" \
             --exclude="web/app/uploads" \
             ./ $REMOTE_USER@$REMOTE_HOST:$REMOTE_PATH

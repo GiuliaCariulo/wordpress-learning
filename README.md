@@ -112,7 +112,7 @@ Lorsque vous créez votre propre thème basé sur Lumberjack avec des assets fro
 
 Conseil: dupliquer le thème `lumberjack` et renommer-le.
 
-Une fois votre thème nommé, faites-une recherche dans tous les fichiers du projet (`Cmd + Maj + F`) et remplacer `mon-theme` par le nom de votre thème.
+Une fois votre thème nommé, faites-une recherche dans tous les fichiers du projet (`Cmd + Maj + F`) et remplacer `theme-first-test` par le nom de votre thème.
 
 2. Dans le fichier style.css de votre theme, renommer le `Theme Name` (ligne 2)
 
@@ -120,13 +120,13 @@ Une fois votre thème nommé, faites-une recherche dans tous les fichiers du pro
 
 ```dockerfile
 # Définir le répertoire de travail du thème
-WORKDIR /var/www/html/web/app/themes/mon-theme
+WORKDIR /var/www/html/web/app/themes/theme-first-test
 
 # Copier les fichiers frontend pour l'installation JS
-COPY web/app/themes/mon-theme/package.json ./
-COPY web/app/themes/mon-theme/package-lock.json ./
-COPY web/app/themes/mon-theme/vite.config.mjs ./
-COPY web/app/themes/mon-theme/assets/ ./assets
+COPY web/app/themes/theme-first-test/package.json ./
+COPY web/app/themes/theme-first-test/package-lock.json ./
+COPY web/app/themes/theme-first-test/vite.config.mjs ./
+COPY web/app/themes/theme-first-test/assets/ ./assets
 
 # Installer les dépendances JS + build
 RUN npm install && npm run build
@@ -149,7 +149,7 @@ Pour travailler sur les assets de votre thème en local (avec hot-reload) :
 
 ```bash
 # Se placer dans le dossier du thème
-cd web/app/themes/mon-theme
+cd web/app/themes/theme-first-test
 
 # Installer les dépendances
 npm install
@@ -226,7 +226,7 @@ Dans le fichier `.github/workflows/deploy.yml`, modifiez la variable `THEME_PATH
 
 ```yaml
 env:
-  THEME_PATH: web/app/themes/mon-theme # Remplacez par votre thème
+  THEME_PATH: web/app/themes/theme-first-test # Remplacez par votre thème
 ```
 
 ### Fichiers exclus du déploiement
@@ -260,7 +260,7 @@ Vérifiez que `DB_HOST=db` dans votre fichier `.env` (c'est le nom du service Do
 ### Les assets ne se compilent pas
 
 1. Vérifiez que vous avez décommenté les lignes du `Dockerfile`
-2. Remplacez `mon-theme` par le nom exact de votre thème
+2. Remplacez `theme-first-test` par le nom exact de votre thème
 3. Reconstruisez l'image : `docker compose build --no-cache`
 
 ### Erreur de permissions sur uploads

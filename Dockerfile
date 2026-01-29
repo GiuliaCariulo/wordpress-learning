@@ -36,16 +36,16 @@ RUN composer install --no-scripts --no-autoloader \
     && composer dump-autoload --optimize
 
 # Définir le répertoire de travail du thème
-# WORKDIR /var/www/html/web/app/themes/mon-theme
+WORKDIR /var/www/html/web/app/themes/theme-first-test
 
-# # Copier les fichiers frontend pour l'installation JS
-# COPY web/app/themes/mon-theme/package.json ./
-# COPY web/app/themes/mon-theme/package-lock.json ./
-# COPY web/app/themes/mon-theme/vite.config.mjs ./
-# COPY web/app/themes/mon-theme/assets/ ./assets
+# Copier les fichiers frontend pour l'installation JS
+COPY web/app/themes/theme-first-test/package.json ./
+COPY web/app/themes/theme-first-test/package-lock.json ./
+COPY web/app/themes/theme-first-test/vite.config.mjs ./
+COPY web/app/themes/theme-first-test/assets/ ./assets
 
-# # Installer les dépendances JS + build
-# RUN npm install && npm run build
+# Installer les dépendances JS + build
+RUN npm install && npm run build
 
 # Copier le reste du projet
 COPY . .
